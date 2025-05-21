@@ -1,8 +1,8 @@
 site/
 env/
-.env/
-.cache/
-.vscode/
+.env
+.cache
+.vscode
 target/
 volume/
 __pycache__/
