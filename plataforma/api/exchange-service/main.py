@@ -56,6 +56,8 @@ def get_exchange(
     # Example Request: https://v6.exchangerate-api.com/v6/5b598b9eb728fb2dcfc9d467/latest/USD
     base = os.getenv("EXCHANGE_API_BASE_URL")
     key  = os.getenv("EXCHANGE_API_KEY")
+    print("Base URL:", base)
+    print("API Key:", key)
     url = f"{base}/{key}/latest/{from_currency}"
 
     resp = requests.get(url, timeout=5)
@@ -72,5 +74,5 @@ def get_exchange(
         sell=rate,
         buy=rate,
         date=datetime.now(timezone.utc),
-        account_id=token_payload.get("sub"),
+        account_id = token_payload.get("sub") or token_payload.get("jti"),
     )
