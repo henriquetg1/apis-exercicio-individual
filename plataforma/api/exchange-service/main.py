@@ -14,12 +14,14 @@ load_dotenv()
 
 app = FastAPI(title="Exchange Service")
 
-# segurança JWT
 security = HTTPBearer()
 raw_secret = os.getenv("JWT_SECRET_KEY")
 JWT_SECRET = base64.b64decode(raw_secret)
 JWT_ALGO   = os.getenv("JWT_ALGORITHM", "HS256")
 
+SPREAD_PERCENTAGE = float(os.getenv("SPREAD_PERCENTAGE", "2.0"))
+
+# segurança JWT
 def verify_token(
     credentials: HTTPAuthorizationCredentials = Depends(security)
 ) -> Dict[str, Any]:
@@ -30,7 +32,7 @@ def verify_token(
     except jwt.PyJWTError:
         raise HTTPException(status_code=401, detail="Token inválido")
 
-# modelo de resposta
+#modelo de resposta
 class ExchangeResponse(BaseModel):
     sell: float
     buy: float
@@ -56,8 +58,6 @@ def get_exchange(
     # Example Request: https://v6.exchangerate-api.com/v6/5b598b9eb728fb2dcfc9d467/latest/USD
     base = os.getenv("EXCHANGE_API_BASE_URL")
     key  = os.getenv("EXCHANGE_API_KEY")
-    print("Base URL:", base)
-    print("API Key:", key)
     url = f"{base}/{key}/latest/{from_currency}"
 
     resp = requests.get(url, timeout=5)
@@ -68,11 +68,15 @@ def get_exchange(
     if not rates or to_currency not in rates:
         raise HTTPException(status_code=404, detail="Taxa não encontrada")
 
-    rate = rates[to_currency]
+    base_rate = rates[to_currency]
+    
+    spread_factor = SPREAD_PERCENTAGE / 100
+    buy_rate = round(base_rate * (1 - spread_factor/2), 4)
+    sell_rate = round(base_rate * (1 + spread_factor/2), 4)
 
     return ExchangeResponse(
-        sell=rate,
-        buy=rate,
+        sell=sell_rate,
+        buy=buy_rate,
         date=datetime.now(timezone.utc),
-        account_id = token_payload.get("sub") or token_payload.get("jti"),
+        account_id = token_payload.get("jti"),
     )
