@@ -48,7 +48,7 @@ services:
       context: ./exchange-service
       dockerfile: Dockerfile
     env_file:
-      - ./api/exchange-service/.env
+      - ./exchange-service/.env
     ports:
       - "8002:8002"
     depends_on:

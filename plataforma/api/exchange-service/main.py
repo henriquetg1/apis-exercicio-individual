@@ -1,6 +1,7 @@
 import os
 from datetime import datetime, timezone
 from typing import Any, Dict
+import base64
 
 import jwt
 import requests
@@ -15,7 +16,8 @@ app = FastAPI(title="Exchange Service")
 
 # segurança JWT
 security = HTTPBearer()
-JWT_SECRET = os.getenv("JWT_SECRET_KEY")
+raw_secret = os.getenv("JWT_SECRET_KEY")
+JWT_SECRET = base64.b64decode(raw_secret)
 JWT_ALGO   = os.getenv("JWT_ALGORITHM", "HS256")
 
 def verify_token(
