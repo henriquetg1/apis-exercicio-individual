@@ -1,7 +1,5 @@
-// ProductService.java
 package store.product;
 
-import java.util.Date;
 import java.util.List;
 import java.util.stream.StreamSupport;
 
@@ -34,7 +32,6 @@ public class ProductService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unit is required!");
         }
         
-        product.creation(new Date());
         return productRepository.save(new ProductModel(product)).to();
     }
 

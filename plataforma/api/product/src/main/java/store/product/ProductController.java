@@ -15,15 +15,21 @@ import org.springframework.web.bind.annotation.RequestHeader;
 public interface ProductController {
 
     @PostMapping("/product")
-    public ResponseEntity<ProductOut> create(@RequestBody ProductIn productIn);
+    public ResponseEntity<ProductOut> create(
+        @RequestBody ProductIn productIn
+    );
 
     @GetMapping("/product")
     public ResponseEntity<List<ProductOut>> findAll();
     
     @GetMapping("/product/{id}")
-    public ResponseEntity<ProductOut> findById(@PathVariable("id") String id);
+    public ResponseEntity<ProductOut> findById(
+        @PathVariable("id") String id
+    );
     
     @DeleteMapping("/product/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable("id") String id);
-
+    public ResponseEntity<Void> deleteById(
+        @PathVariable("id") String id
+    );
+    
 }

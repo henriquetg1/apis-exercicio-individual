@@ -1,7 +1,7 @@
 name: store
 
 services:
-  
+
   db:
     image: postgres:latest
     hostname: db
@@ -53,3 +53,13 @@ services:
       - "8002:8002"
     depends_on:
       - auth
+
+  product:
+    hostname: product
+    build:
+      context: ./product-service
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_HOST: db
+      DATABASE_USER: ${POSTGRES_USER:-store}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-store}

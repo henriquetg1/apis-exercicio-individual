@@ -1,7 +1,5 @@
 package store.product;
 
-import java.util.Date;
-
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -14,6 +12,5 @@ public class Product {
     private String name;
     private Double price;
     private String unit;
-    private Date creation;
     
 }

@@ -1,7 +1,5 @@
 package store.product;
 
-import java.math.BigDecimal;
-import jakarta.validation.constraints.*;
 import lombok.Builder;
 import lombok.experimental.Accessors;
 
