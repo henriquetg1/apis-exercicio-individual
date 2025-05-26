@@ -4,7 +4,7 @@ pipeline {
     environment {
         SERVICE = 'exchange-service'
         NAME = "henriquetg1/${env.SERVICE}"
-        REGISTRY_CREDENTIALS = 'dockerhub-credentials'
+        REGISTRY_CREDENTIALS = 'dockerhub-credential'
     }
     
     stages {
