@@ -32,4 +32,8 @@ public interface ProductController {
         @PathVariable("id") String id
     );
     
+    @GetMapping("/product/whoami")
+    public ResponseEntity<ProductOut> whoami(
+        @RequestHeader(value = "id-product", required = true) String idProduct
+    );
 }

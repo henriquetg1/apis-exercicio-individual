@@ -37,5 +37,12 @@ public class ProductResource implements ProductController {
         productService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @Override
+    public ResponseEntity<ProductOut> whoami(String idProduct) {
+        return ResponseEntity
+            .ok()
+            .body(ProductParser.to(productService.findById(idProduct)));
+    }
     
 }

@@ -1,5 +1,7 @@
 package store.product;
 
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,11 +32,15 @@ public class ProductModel {
     @Column(name = "tx_unit")
     private String unit;
 
+    @Column(name = "dt_creation")
+    private Date creation;
+
     public ProductModel(Product p) {
         this.id = p.id();
         this.name = p.name();
         this.price = p.price();
         this.unit = p.unit();
+        this.creation = p.creation();
     }
 
     public Product to() {
@@ -43,6 +49,7 @@ public class ProductModel {
             .name(this.name)
             .price(this.price)
             .unit(this.unit)
+            .creation(this.creation)
             .build();
     }
 
