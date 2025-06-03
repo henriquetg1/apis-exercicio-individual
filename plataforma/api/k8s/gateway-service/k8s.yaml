@@ -11,6 +11,10 @@ spec:
     metadata:
       labels:
         app: gateway-service
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/actuator/prometheus"
     spec:
       containers:
         - name: db
@@ -25,9 +29,7 @@ spec:
             limits:
               memory: "300Mi"
               cpu: "200m"
-
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -40,6 +42,5 @@ spec:
     - port: 80
       protocol: TCP
       targetPort: 8080
-
   selector:
     app: gateway-service
