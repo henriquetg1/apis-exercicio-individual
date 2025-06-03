@@ -1,4 +1,3 @@
-// StoreExceptionHandler.java
 package store.order;
 
 import java.util.Arrays;

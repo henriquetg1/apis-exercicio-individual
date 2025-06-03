@@ -27,7 +27,7 @@ public class OrderItemModel {
     @Column(name = "id_product")
     private String idProduct;
 
-    @Column(name = "quantity")
+    @Column(name = "num_quantity")
     private Integer quantity;
 
     @Column(name = "db_total")

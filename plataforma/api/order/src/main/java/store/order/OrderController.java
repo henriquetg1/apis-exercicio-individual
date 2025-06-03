@@ -20,7 +20,7 @@ public interface OrderController {
     );
 
     @GetMapping("/order")
-    public ResponseEntity<List<OrderOut>> findAll(
+    public ResponseEntity<List<OrderSummaryOut>> findAll(
         @RequestHeader(value = "id-account", required = true) String idAccount
     );
     
