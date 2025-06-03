@@ -9,11 +9,6 @@ spring:
     gateway:
       routes:
 
-        # - id: google
-        #   uri: https://www.google.com
-        #   predicates:
-        #     - Path=/google/**
-
         - id: account
           uri: http://account:8080
           predicates:
@@ -38,6 +33,26 @@ spring:
           uri: http://order:8080
           predicates:
             - Path=/order/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus,health,info,metrics
+  endpoint:
+    prometheus:
+      enabled: true
+    health:
+      show-details: always
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    web:
+      server:
+        request:
+          autotime:
+            enabled: true
 
 logging:
   level:
