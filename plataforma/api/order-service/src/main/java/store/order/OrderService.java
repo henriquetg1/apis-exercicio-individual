@@ -31,7 +31,7 @@ public class OrderService {
 
     @Cacheable(value = "products", key = "#id")
     private ProductOut findProductById(String id) {
-        String url = "http://product:8080/product/" + id;
+        String url = "http://product-service:8080/product/" + id;
         try {
             ResponseEntity<ProductOut> response = restTemplate.getForEntity(url, ProductOut.class);
             
