@@ -1,5 +1,5 @@
 site_name: Projeto Platforms, Microservices, DevOps and APIs - 2025.1
-site_author: João Faraco e grupo
+site_author: Henrique Turco Gera
 theme:
   name: material
   language: pt
@@ -11,7 +11,7 @@ theme:
 nav:
   - Início: index.md
   - Projeto em Grupo: projeto.md
-  - Projetos Individuais:
+  - Projeto Inidividual:
       - Exchange API: individual/exchange.md
       - Product API: individual/product.md
       - Order API: individual/order.md
