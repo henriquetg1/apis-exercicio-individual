@@ -126,11 +126,11 @@ O Order API foi desenvolvido em **Spring Boot (Java)** e fornece um conjunto de 
 ### Testes das rotas com Postman
 
 _Teste com criação de um pedido_  
-![Teste 1](../img/postorder.png)  
+![Teste 1](../img/order-post-postman.png)  
 
 _Teste para ver todos os pedidos cadastrados_  
-![Teste 2](../img/getallorders.png)  
+![Teste 2](../img/order-getall-postman.png)  
 
 _Teste para ver um pedido cadastrado específico_  
-![Teste 3](../img/getorderid.png)  
+![Teste 3](../img/order-get-postman.png)  
  
