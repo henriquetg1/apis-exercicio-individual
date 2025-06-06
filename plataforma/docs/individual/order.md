@@ -106,6 +106,7 @@ O Order API foi desenvolvido em **Spring Boot (Java)** e fornece um conjunto de 
         "total": 26.44
     }
   ```  
+  
 - **Caso o pedido não exista**: retorna **404 Not Found** com corpo vazio.
 
 ---
